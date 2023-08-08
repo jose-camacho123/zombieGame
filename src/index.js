@@ -51,7 +51,7 @@ function setDelay(difficulty) {
     return 1500;
   } else if (difficulty === "normal") {
     return 1000;
-  } else {
+  } else if (difficulty === "hard") {
     return randomInteger(600, 1200);
   }
 }
@@ -122,7 +122,7 @@ function gameOver() {
  *
  */
 function showUp() {
-  let delay = setDelay("easy");
+  let delay = setDelay(difficulty);
   const hole = chooseHole(holes);
   return showAndHide(hole, delay);
 }
@@ -273,6 +273,10 @@ function stopGame() {
 function startGame() {
   setDuration(10);
   showUp();
+  setEventListeners();
+  startTimer();
+  clearScore();
+  play();
   return "game started";
 }
 
